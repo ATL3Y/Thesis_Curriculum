@@ -83,12 +83,13 @@ public class OpponentA : Opponent
                 HandSituations.Add(sit);
                 sit.hand = vrNodeMinion;
 
-                reboundDir = sit.hand.GetForce().normalized; 
+                reboundDir = sit.hand.GetForce( ).normalized; 
                 reboundMod = sit.hand.GetForce ( ).magnitude / Time.deltaTime * 2.0f; // This range is about 0.0f to 4.0f.
 
                 if( debug ) Debug.Log ( "Hit by hand reboundMod: " + reboundMod );
 
-                if (sit.hand.glove.isActiveAndEnabled)
+                // Can only collide with "gloves on" 
+                if ( sit.hand.glove != null && sit.hand.glove.gameObject.activeInHierarchy )
                 {
                     state = OpponentState.Hit;
                     GameLord.instance.MusicLord.PlayResponseClip ( transform.localPosition );

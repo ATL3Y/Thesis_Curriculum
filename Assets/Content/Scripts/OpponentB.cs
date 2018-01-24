@@ -105,7 +105,7 @@ public class OpponentB : Opponent
             // Pulse intentity increases with proximity
             int pulseIntensity = Mathf.RoundToInt(999.0f / HandSituations[i].myDistToCore); // High is 3999
             HandSituations[i].hand.HapticPulse(pulseIntensity);
-            if (debug) Debug.Log(i + " pulseIntensity " + pulseIntensity);
+            // if (debug) Debug.Log(i + " pulseIntensity " + pulseIntensity);
 
             // Register a point for every x seconds in collision
             scoreTimer += Time.deltaTime;
@@ -131,8 +131,9 @@ public class OpponentB : Opponent
     {
         if (debug) Debug.Log("OnCollisionEnter: " + collision.gameObject.name);
 
+        // Cannot collide with "gloves on"
         VRNodeMinion enteringVrNodeMinion = collision.gameObject.GetComponent<VRNodeMinion>();
-        if (enteringVrNodeMinion.glove.isActiveAndEnabled)
+        if ( enteringVrNodeMinion.glove != null && enteringVrNodeMinion.glove.gameObject.activeInHierarchy )
         {
             return;
         }

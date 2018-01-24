@@ -73,12 +73,13 @@ public class MusicLord : MonoBehaviour
     // Iterate through OppBTracks and return the next that is on.
     public int NextStemOnIndex ( )
     {
+        return 0;
         var startIndex = stemIndex;
         if ( startIndex == 0 && stemSources.Length <= 1 )
         {
             return -1;
         }
-
+        /*
         while ( true )
         {
             stemIndex++;
@@ -95,6 +96,7 @@ public class MusicLord : MonoBehaviour
                 return -1;
             }
         }
+        */
     }
 
     // Called from OpponentA

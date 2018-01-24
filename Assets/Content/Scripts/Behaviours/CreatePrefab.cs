@@ -11,6 +11,8 @@ public class CreatePrefab : MonoBehaviour
 
     void Start()
     {
+        Debug.Log ( "Here I Am!" );
+        
         // set the position of the prefab created relative to the triggering object
         itemPosition.x += transform.position.x;
         itemPosition.y += transform.position.y;
@@ -20,11 +22,14 @@ public class CreatePrefab : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //Create a prefab
-        // Instantiate(itemToCreate, itemPosition, Quaternion.Euler(itemRotation.x, itemRotation.y, itemRotation.z));
-	    Instantiate(itemToCreate, itemPosition, Quaternion.Euler(itemRotation.x, itemRotation.y, itemRotation.z));
+        if ( other.tag == "Untagged" )
+        {
+            //Create a prefab
+            // Instantiate(itemToCreate, itemPosition, Quaternion.Euler(itemRotation.x, itemRotation.y, itemRotation.z));
+            Instantiate ( itemToCreate, itemPosition, Quaternion.Euler ( itemRotation.x, itemRotation.y, itemRotation.z ) );
 
-    	//Destroy the trigger (if you only want it to happen once)
-	    Destroy(this);
+            //Destroy the trigger (if you only want it to happen once)
+            //Destroy(this);
+        }
     }
 }
