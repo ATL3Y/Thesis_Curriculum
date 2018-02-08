@@ -7,7 +7,7 @@ public class SpawnPrefab : MonoBehaviour
 {
 
     public GameObject PrefabToSpawn;
-    public List<GameObject> prefabs = new List<GameObject>();
+    public List<CollisionTestSphere> colTestSpheres = new List<CollisionTestSphere>();
 
     public int NumberToSpawn;
 
@@ -19,8 +19,6 @@ public class SpawnPrefab : MonoBehaviour
     public float MinZSpawnLocation;
     public float MaxZSpawnLocation;
 
-    public GameObject explosionPrefab; // Mispell a variable name and include that as an error
-
     // Use this for initialization
     void Start ()
     {
@@ -30,7 +28,7 @@ public class SpawnPrefab : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (prefabs.Count < NumberToSpawn)
+        if ( colTestSpheres.Count < NumberToSpawn)
         {
             InstantiatePrefab();
         }
@@ -46,9 +44,19 @@ public class SpawnPrefab : MonoBehaviour
         {
             prefabPosition = GenerateRandomPosition();
         }
-        newGameObject = Instantiate(PrefabToSpawn, prefabPosition, Quaternion.identity);
-        prefabs.Add(newGameObject);
 
+        newGameObject = Instantiate(PrefabToSpawn, prefabPosition, Quaternion.identity);
+        CollisionTestSphere colTestInstance = newGameObject.GetComponent<CollisionTestSphere>();
+        if(colTestInstance != null )
+        {
+            colTestInstance.mySpawner = this;
+            colTestSpheres.Add ( colTestInstance );
+        }
+    }
+
+    public void RemoveMe ( CollisionTestSphere colTestInstance )
+    {
+        colTestSpheres.Remove ( colTestInstance );
     }
 
     private Vector3 GenerateRandomPosition()
