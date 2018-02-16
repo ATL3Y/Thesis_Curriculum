@@ -32,12 +32,16 @@ public class GameController_Tutorial_03 : MonoBehaviour
             CollectableController.instance.CreateCollectable ( rightHand.transform.position );
         }
 
-        if( leftHand.ThumbClickDown || rightHand.ThumbClickDown )
+        if ( leftHand.ThumbClickDown )
         {
-            CollectableController.instance.CreateAllCollectables();
+            CollectableController.instance.CreateAllCollectables ( leftHand.transform.position );
         }
-		
-	}
+
+        if ( rightHand.ThumbClickDown )
+        {
+            CollectableController.instance.CreateAllCollectables ( rightHand.transform.position );
+        }
+    }
 
     #endregion
 }

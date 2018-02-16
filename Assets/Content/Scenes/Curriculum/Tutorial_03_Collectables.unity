@@ -154,6 +154,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &490659368 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114545344434579662, guid: 8898ec1e556bab94aa88ca65dcccfa8c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1018742103}
+  m_Script: {fileID: 11500000, guid: eb4492ad13e0f9843980d4d8ed2c60f7, type: 3}
 --- !u!1 &895301778
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +304,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1018742107 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114302433687330458, guid: 8898ec1e556bab94aa88ca65dcccfa8c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1018742103}
+  m_Script: {fileID: 11500000, guid: eb4492ad13e0f9843980d4d8ed2c60f7, type: 3}
 --- !u!1 &1660422325
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3bf305cb469094e9ea42e2f9359f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftHand: {fileID: 1018742107}
+  rightHand: {fileID: 490659368}
 --- !u!4 &1900827035
 Transform:
   m_ObjectHideFlags: 0

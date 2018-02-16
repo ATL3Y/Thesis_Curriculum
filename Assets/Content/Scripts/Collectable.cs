@@ -36,6 +36,8 @@ public class Collectable : MonoBehaviour
 
     private void PickUp ( )
     {
+        if ( debug ) Debug.Log ( "PickUp: owner is " + owner.gameObject.name );
+
         rotOffset = Quaternion.Inverse ( owner.transform.rotation ) * transform.rotation;
         offset = owner.transform.InverseTransformDirection ( transform.position - owner.transform.position );
         if ( pickUpSound )
@@ -43,7 +45,7 @@ public class Collectable : MonoBehaviour
             pickUpSoundSource.Play ( );
         }
 
-        transform.GetComponentInChildren<ParticleSystem> ( ).Play ( );
+        // transform.GetComponentInChildren<ParticleSystem> ( ).Play ( );
     }
 
     private void PutDown ( )
@@ -112,12 +114,22 @@ public class Collectable : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter ( Collision collision )
+    public void OnCollisionStay ( Collision collision )
     {
-        // Check that we are colliding with a hand
-        if ( collision.gameObject.layer == LayerMask.NameToLayer("Hand") )
+        // We can only get picked up if we don't have an owner. 
+        if ( owner != null )
         {
-            owner = collision.gameObject.GetComponent<VRNodeMinion> ( );
+            return;
+        }
+
+        if ( debug ) Debug.Log ( collision.gameObject.name );
+
+        // Check that we are colliding with a hand, and that the hand's trigger is down. 
+        VRNodeMinion handTemp = collision.gameObject.GetComponent<VRNodeMinion> ( );
+        if ( handTemp != null && handTemp.gameObject.layer == LayerMask.NameToLayer ( "Hand" ) 
+            && handTemp.Trigger > .5f )
+        {
+            owner = handTemp;
             PickUp ( );
         }
     }
