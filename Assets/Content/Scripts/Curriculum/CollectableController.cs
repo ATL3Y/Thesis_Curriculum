@@ -18,12 +18,7 @@ public class CollectableController : MonoBehaviour
 
     #endregion
 
-    // Use this for initialization
-    private void Start ( )
-    {
-        instance = this;
-        collectables = new List<Collectable> ( );
-    }
+    #region public functions
 
     public void RemoveCollectable ( Collectable collectable )
     {
@@ -50,4 +45,16 @@ public class CollectableController : MonoBehaviour
         newCollectable.collectableController = this;
         collectables.Add ( newCollectable );
     }
+
+    #endregion
+
+    #region inherited functions
+    // Use this for initialization
+    private void Start ( )
+    {
+        instance = this;
+        collectables = new List<Collectable> ( );
+    }
+
+    #endregion
 }
