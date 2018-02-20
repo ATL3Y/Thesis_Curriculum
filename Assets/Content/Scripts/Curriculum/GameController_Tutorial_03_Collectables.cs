@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController_Tutorial_03 : MonoBehaviour
+public class GameController_Tutorial_03_Collectables : MonoBehaviour
 {
     #region private data
 

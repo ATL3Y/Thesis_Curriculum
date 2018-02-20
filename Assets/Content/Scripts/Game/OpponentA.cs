@@ -68,10 +68,6 @@ public class OpponentA : Opponent
         return target;
     }
 
-    #endregion
-
-    #region inherited functions
-
     private void OnCollisionEnter ( Collision collision )
     {
         if ( state == OpponentState.Untouched )
@@ -226,6 +222,10 @@ public class OpponentA : Opponent
         // Clear the list of hands
         HandSituations.Clear();
     }
+
+    #endregion
+
+    #region inherited functions
 
     protected override void OnEnable ( )
     {
