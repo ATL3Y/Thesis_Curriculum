@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController_Tutorial_04_Mixer : MonoBehaviour
+public class GameController_Mixer : MonoBehaviour
 {
 
     #region public data
 
-    public static GameController_Tutorial_04_Mixer instance;
+    public static GameController_Mixer instance;
     public VRNodeMinion leftHand;
     public VRNodeMinion rightHand;
 

@@ -13,7 +13,7 @@ public class CollectableController : MonoBehaviour
     #region private data
 
     private List<Collectable> collectables;
-    private float constraint = 5.0f;
+    private int constraint = 5;
     [SerializeField] GameObject prefab;
 
     #endregion
@@ -27,6 +27,7 @@ public class CollectableController : MonoBehaviour
 
     public void CreateAllCollectables ( Vector3 pos )
     {
+        // BREAK BY omitting this whole block
         Vector3 startPos = new Vector3( pos.x, 0.0f, pos.y );
 
         for ( int i = 0; i < constraint; i++ )

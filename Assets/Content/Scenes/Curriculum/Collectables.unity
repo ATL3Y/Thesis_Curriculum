@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 1900827035}
   - component: {fileID: 1900827034}
   m_Layer: 0
-  m_Name: GameController_Tutorial_03
+  m_Name: GameController_Collectables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

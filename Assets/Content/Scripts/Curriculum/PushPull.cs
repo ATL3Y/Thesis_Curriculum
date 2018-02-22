@@ -62,8 +62,9 @@ public class PushPull : MonoBehaviour
             {
                 if ( fleeDist < fleeDistThreshold )
                 {
+                    // BREAK BY omitting some of this
                     Vector3 currentPos = attractees [ i ].transform.position;
-                    Vector3 targetDir = currentPos - rightHand.transform.position; // The Key!
+                    Vector3 targetDir = currentPos - rightHand.transform.position; // BREAK BY flipping this line
                     targetDir = targetDir.normalized;
                     Vector3 targetPos = currentPos + targetDir;
                     attractees [ i ].transform.position = Vector3.Lerp ( currentPos, targetPos, Time.deltaTime * speed );

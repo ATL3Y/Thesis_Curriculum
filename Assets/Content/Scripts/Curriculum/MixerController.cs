@@ -47,12 +47,13 @@ public class MixerController : MonoBehaviour
 
     private void Update ( )
     {
-        if( GameController_Tutorial_04_Mixer.instance.leftHand.Trigger > 0.5f )
+        // SetVolume ( 1.0f );
+        if( GameController_Mixer.instance.leftHand.Trigger > 0.5f )
         {
             if ( debug ) Debug.Log ( "leftHand.Trigger > 0.5f" );
             RaycastHit hit = new RaycastHit();
-            Vector3 fwd = GameController_Tutorial_04_Mixer.instance.leftHand.transform.forward;
-            Vector3 pos = GameController_Tutorial_04_Mixer.instance.leftHand.transform.position + fwd;
+            Vector3 fwd = GameController_Mixer.instance.leftHand.transform.forward;
+            Vector3 pos = GameController_Mixer.instance.leftHand.transform.position + fwd;
 
             Ray ray = new Ray(pos, fwd);
             if ( Physics.Raycast ( ray, out hit, 50.0f ) )
@@ -67,12 +68,12 @@ public class MixerController : MonoBehaviour
             }
         }
 
-        if ( GameController_Tutorial_04_Mixer.instance.rightHand.Trigger > 0.5f )
+        if ( GameController_Mixer.instance.rightHand.Trigger > 0.5f )
         {
             if ( debug ) Debug.Log ( "rightHand.Trigger > 0.5f" );
             RaycastHit hit = new RaycastHit();
-            Vector3 fwd = GameController_Tutorial_04_Mixer.instance.rightHand.transform.forward;
-            Vector3 pos = GameController_Tutorial_04_Mixer.instance.rightHand.transform.position + fwd;
+            Vector3 fwd = GameController_Mixer.instance.rightHand.transform.forward;
+            Vector3 pos = GameController_Mixer.instance.rightHand.transform.position + fwd;
 
             Ray ray = new Ray(pos, fwd);
             if ( Physics.Raycast ( ray, out hit, 50.0f ) )

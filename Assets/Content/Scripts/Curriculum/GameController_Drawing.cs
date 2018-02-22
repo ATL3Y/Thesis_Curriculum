@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController_Tutorial_01_Drawing : MonoBehaviour
+public class GameController_Drawing : MonoBehaviour
 {
 
     #region private data

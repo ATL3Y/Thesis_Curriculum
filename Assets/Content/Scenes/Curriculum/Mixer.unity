@@ -899,7 +899,7 @@ GameObject:
   - component: {fileID: 1626472928}
   - component: {fileID: 1626472929}
   m_Layer: 0
-  m_Name: GameController_Tutorial_04_Mixer
+  m_Name: GameController_Mixer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
