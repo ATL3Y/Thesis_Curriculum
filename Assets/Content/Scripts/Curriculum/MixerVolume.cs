@@ -15,8 +15,6 @@ public class MixerVolume : MixerFeature
     protected override void Update ( )
     {
         base.Update ( );
-        // SetVolume ( 1.0f );
-        // MixerController.SetVolume ( 1.0f );
         mixerController.SetVolume ( currentFillAmount );
     }
 

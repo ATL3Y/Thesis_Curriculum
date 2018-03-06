@@ -15,7 +15,6 @@ public class MixerFilter : MixerFeature
     protected override void Update ( )
     {
         base.Update ( );
-
         mixerController.SetFilter ( currentFillAmount );
     }
 

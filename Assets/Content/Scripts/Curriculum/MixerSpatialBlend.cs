@@ -15,7 +15,6 @@ public class MixerSpatialBlend : MixerFeature
     protected override void Update ( )
     {
         base.Update ( );
-
         mixerController.SetSpatialBlend ( currentFillAmount );
     }
 

@@ -59,7 +59,7 @@ public class MixerController : MonoBehaviour
             if ( Physics.Raycast ( ray, out hit, 50.0f ) )
             {
                 if ( debug ) Debug.Log ( "Raycast: " + hit.transform.gameObject.name );
-                MixerVolume mixerVolume = hit.transform.gameObject.GetComponent<MixerVolume>();
+                MixerFeature mixerVolume = hit.transform.gameObject.GetComponent<MixerFeature>();
                 if ( mixerVolume != null )
                 {
                     if ( debug ) Debug.Log ( "mixerFeature.Fill to: " + hit.point.y / hit.collider.transform.localScale.y ); 
@@ -79,7 +79,7 @@ public class MixerController : MonoBehaviour
             if ( Physics.Raycast ( ray, out hit, 50.0f ) )
             {
                 if ( debug ) Debug.Log ( "Raycast: " + hit.transform.gameObject.name );
-                MixerVolume mixerVolume = hit.transform.gameObject.GetComponent<MixerVolume>();
+                MixerFeature mixerVolume = hit.transform.gameObject.GetComponent<MixerFeature>();
                 if ( mixerVolume != null )
                 {
                     if ( debug ) Debug.Log ( "mixerFeature.Fill to: " + hit.point.y / hit.collider.transform.localScale.y ); 

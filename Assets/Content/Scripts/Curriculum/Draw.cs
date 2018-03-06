@@ -13,25 +13,26 @@ public class Draw : MonoBehaviour
     #region private data
 
     private bool debug = true;
-    private LineRenderer rend;
+    private TrailRenderer rend;
 
     #endregion
 
     #region public functions
 
-    public void TurnLineOff ( )
+    public void TurnTrailOff ( )
     {
         rend.enabled = false;
     }
 
-    public void TurnLineOn ( )
+    public void TurnTrailOn ( )
     {
         rend.enabled = true;
     }
 
-    public void ChangeLineColor( Color col )
+    public void ChangeTrailColor( Color col )
     {
-        rend.material.color = col;
+        rend.startColor = col;
+        rend.endColor = col;
     }
 
     #endregion
@@ -57,11 +58,12 @@ public class Draw : MonoBehaviour
     // Use this for initialization
     private void Start ( )
     {
-        rend = GetComponent<LineRenderer> ( );
+        rend = GetComponent<TrailRenderer> ( );
         if( rend == null )
         {
             Debug.LogError ( "This needs a line renderer." );
         }
+        ChangeTrailColor ( 1.2f * new Color ( Random.value, Random.value, Random.value, 1.0f ) );
     }
 
     #endregion
