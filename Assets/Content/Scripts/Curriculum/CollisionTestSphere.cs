@@ -27,7 +27,7 @@ public class CollisionTestSphere : MonoBehaviour
             {
                 Debug.Log ( "destroying" );
                 
-                Destroy ( this );
+                Destroy ( this.gameObject );
             }
         }
     }

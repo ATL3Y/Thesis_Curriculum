@@ -3,33 +3,30 @@ using System.Collections;
 
 public class CreatePrefab : MonoBehaviour
 {
+    #region private data 
 
-    public GameObject itemToCreate;
-    public Vector3 itemPosition;
-    public Vector3 itemRotation;
+    private bool debug = false;
+    [SerializeField] GameObject itemToCreate;
+    [SerializeField] Vector3 spawnPosition;
 
+    #endregion
 
-    void Start()
+    #region private functions
+
+    private void Start ( )
     {
-        Debug.Log ( "Here I Am!" );
-        
-        // set the position of the prefab created relative to the triggering object
-        itemPosition.x += transform.position.x;
-        itemPosition.y += transform.position.y;
-        itemPosition.z += transform.position.z;
-        Debug.Log(itemToCreate);
+
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter ( Collider other )
     {
-        if ( other.tag == "Untagged" )
+        if ( other.gameObject.layer == LayerMask.NameToLayer("Hand") )
         {
             //Create a prefab
-            // Instantiate(itemToCreate, itemPosition, Quaternion.Euler(itemRotation.x, itemRotation.y, itemRotation.z));
-            Instantiate ( itemToCreate, itemPosition, Quaternion.Euler ( itemRotation.x, itemRotation.y, itemRotation.z ) );
-
-            //Destroy the trigger (if you only want it to happen once)
-            //Destroy(this);
+            if ( debug ) Debug.Log ( "Spawning: " + itemToCreate );
+            Instantiate ( itemToCreate, spawnPosition, Quaternion.identity );
         }
     }
+
+    #endregion
 }

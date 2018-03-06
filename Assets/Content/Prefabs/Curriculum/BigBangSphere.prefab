@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 135631585678381014}
   - component: {fileID: 23301372730556374}
   - component: {fileID: 54976742280240422}
+  - component: {fileID: 114397917080993370}
   m_Layer: 0
   m_Name: BigBangSphere
   m_TagString: Untagged
@@ -99,6 +100,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114397917080993370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923625320757272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b14f6746512c9348954b45616334b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135631585678381014
 SphereCollider:
   m_ObjectHideFlags: 1
