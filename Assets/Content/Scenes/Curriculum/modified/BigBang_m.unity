@@ -338,9 +338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccef434c27225944afe4ad26da9665c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToCreate: {fileID: 1923625320757272, guid: 5515e0aac77ece84ab4f7218d9cbeede,
+  itemToCreate: {fileID: 1923625320757272, guid: 17b2d1cf35733a84a8d3470f7d9b40ca,
     type: 2}
-  spawnPosition: {x: 0, y: 0, z: 0}
+  spawnPosition: {x: 0, y: 10, z: 0}
 --- !u!23 &2100459146
 MeshRenderer:
   m_ObjectHideFlags: 0

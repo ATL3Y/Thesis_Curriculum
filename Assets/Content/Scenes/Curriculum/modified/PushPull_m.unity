@@ -448,7 +448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1684979981}
   - component: {fileID: 1684979980}
-  - component: {fileID: 1684979982}
+  - component: {fileID: 1684979983}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -491,7 +491,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1684979982
+--- !u!114 &1684979983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1684979979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1cb5dc2f52b7db46b8ccb4ecd47e4d7, type: 3}
+  m_Script: {fileID: 11500000, guid: e99ba44568b9e2641ad11b0d200fb2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   leftHand: {fileID: 713687096}
@@ -608,8 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToCreate: {fileID: 1718170148001394, guid: 9adbe94e4de09ed44a6d9377c42781da,
     type: 2}
-  offset: {x: 0, y: 0, z: 0}
-  player: {fileID: 0}
+  spawnPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &1786380770
 Prefab:
   m_ObjectHideFlags: 0
