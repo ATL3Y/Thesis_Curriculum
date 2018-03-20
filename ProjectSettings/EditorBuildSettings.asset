@@ -23,10 +23,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Content/Scenes/Game/Credits.unity
     guid: e847c5584a9a79146af258c8cbaab4e1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Content/Scenes/Curriculum/working/BigBang.unity
     guid: f1a1aac8fdc35df4699f68452a1e4ee0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Content/Scenes/Curriculum/working/Collectables.unity
     guid: 301403ec2f3b7fa4bbce6a7af45d54f0
   - enabled: 0
