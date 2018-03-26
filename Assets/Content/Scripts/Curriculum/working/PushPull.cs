@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class PushPull : MonoBehaviour
 {
-    private List<CollisionTestSphere> attractees;
-
-    // dropped in from prefab in inspector
-    public VRNodeMinion leftHand;
-    public VRNodeMinion rightHand;
-
-    private bool IsPulling = false;
-
     public float speed;
     public float followDistThreshold;
     public float fleeDistThreshold;
+
+    private List<CollisionTestSphere> attractees;
+    [SerializeField]
+    PlayerCurriculum playerCurriculum;
+    private bool IsPulling = false;
 
     [SerializeField] Material followCol;
     [SerializeField] Material fleeCol;
@@ -40,16 +37,16 @@ public class PushPull : MonoBehaviour
     {
         for ( int i = 0; i < attractees.Count; i++ )
         {
-            float followDist = CalculateDistance( attractees[i].transform.position, leftHand.transform.position );
-            float fleeDist = CalculateDistance( attractees[i].transform.position, rightHand.transform.position );
+            float followDist = CalculateDistance( attractees[i].transform.position, playerCurriculum.GetLeftHand().position );
+            float fleeDist = CalculateDistance( attractees[i].transform.position, playerCurriculum.GetRightHand().position );
 
-            if ( leftHand.Trigger > 0.8f )
+            if ( playerCurriculum.GetLeftTriggerDown() )
             {
                 if ( followDist < followDistThreshold )
                 {
                     
                     Vector3 currentPos = attractees [ i ].transform.position;
-                    Vector3 targetDir = leftHand.transform.position - currentPos;
+                    Vector3 targetDir = playerCurriculum.GetLeftHand().position - currentPos;
                     targetDir = targetDir.normalized;
                     Vector3 targetPos = currentPos + targetDir;
                     attractees [ i ].transform.position = Vector3.Lerp ( currentPos, targetPos, Time.deltaTime * speed );
@@ -58,12 +55,12 @@ public class PushPull : MonoBehaviour
                     
                 }
             }
-            else if ( rightHand.Trigger > 0.8f )
+            else if ( playerCurriculum.GetRightTriggerDown( ) )
             {
                 if ( fleeDist < fleeDistThreshold )
                 {
                     Vector3 currentPos = attractees [ i ].transform.position;
-                    Vector3 targetDir = currentPos - rightHand.transform.position;
+                    Vector3 targetDir = currentPos - playerCurriculum.GetRightHand().transform.position;
                     targetDir = targetDir.normalized;
                     Vector3 targetPos = currentPos + targetDir;
                     attractees [ i ].transform.position = Vector3.Lerp ( currentPos, targetPos, Time.deltaTime * speed );
