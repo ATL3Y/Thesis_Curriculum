@@ -12,7 +12,7 @@ public class Collectable : MonoBehaviour
 
     #region private data
 
-    private VRNodeMinion owner;
+    private GameObject owner;
     private Vector3 offset;
     private Quaternion rotOffset;
 
@@ -103,7 +103,7 @@ public class Collectable : MonoBehaviour
         }
 
         // If the owner is holding the trigger, stick to the owner.
-        if ( owner.Trigger > 0.5f )
+        if ( PlayerCurriculum.instance.ThisTriggerDown ( owner ) )
         {
             InPickUp ( );
         }
@@ -122,14 +122,17 @@ public class Collectable : MonoBehaviour
             return;
         }
 
-        if ( debug ) Debug.Log ( collision.gameObject.name );
+        GameObject temp = collision.gameObject;
+        if ( temp == null ) return;
 
-        // Check that we are colliding with a hand, and that the hand's trigger is down. 
-        VRNodeMinion handTemp = collision.gameObject.GetComponent<VRNodeMinion> ( );
-        if ( handTemp != null && handTemp.gameObject.layer == LayerMask.NameToLayer ( "Hand" ) 
-            && handTemp.Trigger > .5f )
+        if ( debug ) Debug.Log ( temp.name + ", " + temp.layer == LayerMask.NameToLayer ( "Hand" ) + ", " + PlayerCurriculum.instance.ThisTriggerDown ( temp ) );
+
+        // Check that we are colliding with a hand.
+        // Check that the hand's trigger is down. 
+        if ( temp.layer == LayerMask.NameToLayer ( "Hand" ) && PlayerCurriculum.instance.ThisTriggerDown ( temp ) )
         {
-            owner = handTemp;
+            owner = temp;
+            if ( debug ) Debug.Log ( owner.name );
             PickUp ( );
         }
     }

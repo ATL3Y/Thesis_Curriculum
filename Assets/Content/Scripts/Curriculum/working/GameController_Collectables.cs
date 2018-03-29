@@ -4,42 +4,29 @@ using UnityEngine;
 
 public class GameController_Collectables : MonoBehaviour
 {
-    #region private data
-
-    [SerializeField] VRNodeMinion leftHand;
-    [SerializeField] VRNodeMinion rightHand;
-
-    #endregion
-
     #region private functions
-
-    // Use this for initialization
-    private void Start ()
-    {
-		
-	}
 	
 	// Update is called once per frame
 	private void Update ()
     {
-        if ( leftHand.ButtonADown )
+        if ( PlayerCurriculum.instance.LeftADown() )
         {
-            CollectableController.instance.CreateCollectable ( leftHand.transform.position );
+            CollectableController.instance.CreateCollectable ( PlayerCurriculum.instance.GetLeftHand().position );
         }
 
-        if ( rightHand.ButtonADown )
+        if ( PlayerCurriculum.instance.RightADown ( ) )
         {
-            CollectableController.instance.CreateCollectable ( rightHand.transform.position );
+            CollectableController.instance.CreateCollectable ( PlayerCurriculum.instance.GetRightHand ( ).position );
         }
 
-        if ( leftHand.ThumbClickDown )
+        if ( PlayerCurriculum.instance.LeftThumbClickDown() )
         {
-            CollectableController.instance.CreateAllCollectables ( leftHand.transform.position + 2.5f * leftHand.transform.forward );
+            CollectableController.instance.CreateAllCollectables ( PlayerCurriculum.instance.GetLeftHand ( ).position + 2.5f * PlayerCurriculum.instance.GetLeftHand().forward );
         }
 
-        if ( rightHand.ThumbClickDown )
+        if ( PlayerCurriculum.instance.RightThumbClickDown() )
         {
-            CollectableController.instance.CreateAllCollectables ( rightHand.transform.position + 2.5f * leftHand.transform.forward );
+            CollectableController.instance.CreateAllCollectables ( PlayerCurriculum.instance.GetRightHand ( ).position + 2.5f * PlayerCurriculum.instance.GetRightHand ( ).forward );
         }
     }
 

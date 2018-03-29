@@ -73,9 +73,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4956673751084514}
   - component: {fileID: 33801720638133804}
-  - component: {fileID: 65573610184867174}
   - component: {fileID: 23086534621765136}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,9 +216,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4720252975473480}
   - component: {fileID: 33524613251504576}
-  - component: {fileID: 65946662553369010}
   - component: {fileID: 23241436154291642}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,6 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4017712836445190}
   - component: {fileID: 135201509737965674}
+  - component: {fileID: 54206109184353066}
   m_Layer: 8
   m_Name: Left Hand
   m_TagString: Untagged
@@ -306,6 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4390664341507626}
   - component: {fileID: 135352574229997294}
+  - component: {fileID: 54270391635636676}
   m_Layer: 8
   m_Name: Right Hand
   m_TagString: Untagged
@@ -554,7 +554,7 @@ Transform:
   m_GameObject: {fileID: 1801333860037384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.075, y: 0.075, z: 0.075}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4017712836445190}
   m_RootOrder: 0
@@ -607,7 +607,7 @@ Transform:
   m_GameObject: {fileID: 1182981995798638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.075, y: 0.075, z: 0.075}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4390664341507626}
   m_RootOrder: 0
@@ -1109,12 +1109,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!54 &54206109184353066
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843220079224506}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!54 &54264337080188578
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1505808297622688}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54270391635636676
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1942113707829388}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -1156,30 +1186,6 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1764802029173690}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65573610184867174
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1182981995798638}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65946662553369010
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1801333860037384}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -1540,7 +1546,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.18
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135313484826244170
 SphereCollider:
@@ -1564,7 +1570,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.18
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135804231050912590
 SphereCollider:
@@ -1601,7 +1607,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.8
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

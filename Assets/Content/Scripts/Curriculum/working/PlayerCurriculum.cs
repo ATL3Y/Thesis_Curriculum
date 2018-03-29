@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCurriculum : MonoBehaviour
 {
+    public static PlayerCurriculum instance;
+
     [SerializeField]
     bool isVR = false;
 
@@ -24,6 +26,7 @@ public class PlayerCurriculum : MonoBehaviour
 
     public bool GetRightTriggerDown ( ) { return RightTriggerDown; }
     private bool RightTriggerDown = false;
+    private bool debug = true;
 
     public Transform GetLeftHand ( )
     {
@@ -49,6 +52,126 @@ public class PlayerCurriculum : MonoBehaviour
         }
     }
 
+    public bool ThisTriggerDown ( GameObject hand )
+    {
+        if ( debug ) Debug.Log ( (hand == GetLeftHand ( ).gameObject) + ", " + GetLeftTriggerDown ( ) );
+        if ( debug ) Debug.Log ( ( hand == GetRightHand ( ).gameObject ) + ", " + GetRightTriggerDown ( ) );
+
+        if ( ( hand == GetLeftHand ( ).gameObject && GetLeftTriggerDown ( ) )
+            || ( hand == GetRightHand ( ).gameObject && GetRightTriggerDown ( ) ) )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool LeftADown ( )
+    {
+        if ( isVR )
+        {
+            if ( LeftHandVR.ButtonADown )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if ( Input.GetKeyDown ( KeyCode.A ) )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    public bool RightADown ( )
+    {
+        if ( isVR )
+        {
+            if ( RightHandVR.ButtonADown )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if ( Input.GetKeyDown ( KeyCode.L ) )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    public bool LeftThumbClickDown ( )
+    {
+        if ( isVR )
+        {
+            if ( RightHandVR.ThumbClickDown )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if ( Input.GetKeyDown ( KeyCode.LeftShift ) )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    public bool RightThumbClickDown ( )
+    {
+        if ( isVR )
+        {
+            if ( RightHandVR.ThumbClickDown )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if ( Input.GetKeyDown( KeyCode.RightShift ) )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
     private void Update ()
     {
         if ( isVR )
@@ -65,6 +188,8 @@ public class PlayerCurriculum : MonoBehaviour
 
     private void Start ( )
     {
+        instance = this;
+
         if ( isVR )
         {
             player_VR.SetActive ( true );

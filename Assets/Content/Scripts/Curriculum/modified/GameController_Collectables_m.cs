@@ -4,42 +4,29 @@ using UnityEngine;
 
 public class GameController_Collectables_m: MonoBehaviour
 {
-    #region private data
-
-    [SerializeField] VRNodeMinion leftHand;
-    [SerializeField] VRNodeMinion rightHand;
-
-    #endregion
-
     #region private functions
 
-    // Use this for initialization
-    private void Start ()
+    // Update is called once per frame
+    private void Update ( )
     {
-		
-	}
-	
-	// Update is called once per frame
-	private void Update ()
-    {
-        if ( leftHand.ButtonADown )
+        if ( PlayerCurriculum.instance.LeftADown ( ) )
         {
-            CollectableController_m.instance.CreateCollectable ( leftHand.transform.position );
+            CollectableController_m.instance.CreateCollectable ( PlayerCurriculum.instance.GetLeftHand ( ).position );
         }
 
-        if ( rightHand.ButtonADown )
+        if ( PlayerCurriculum.instance.RightADown ( ) )
         {
-            CollectableController_m.instance.CreateCollectable ( rightHand.transform.position );
+            CollectableController_m.instance.CreateCollectable ( PlayerCurriculum.instance.GetRightHand ( ).position );
         }
 
-        if ( leftHand.ThumbClickDown )
+        if ( PlayerCurriculum.instance.LeftThumbClickDown ( ) )
         {
-            CollectableController_m.instance.CreateAllCollectables ( leftHand.transform.position + 2.5f * leftHand.transform.forward );
+            CollectableController_m.instance.CreateAllCollectables ( PlayerCurriculum.instance.GetLeftHand ( ).position + 2.5f * PlayerCurriculum.instance.GetLeftHand ( ).forward );
         }
 
-        if ( rightHand.ThumbClickDown )
+        if ( PlayerCurriculum.instance.RightThumbClickDown ( ) )
         {
-            CollectableController_m.instance.CreateAllCollectables ( rightHand.transform.position + 2.5f * leftHand.transform.forward );
+            CollectableController_m.instance.CreateAllCollectables ( PlayerCurriculum.instance.GetRightHand ( ).position + 2.5f * PlayerCurriculum.instance.GetRightHand ( ).forward );
         }
     }
 
