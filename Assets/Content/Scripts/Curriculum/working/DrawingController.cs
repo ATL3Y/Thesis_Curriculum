@@ -70,7 +70,7 @@ public class DrawingController : MonoBehaviour
     private void Update ( )
     {
         // update this position to oscillate towards and from the player's gaze
-        Transform playerTrans = GameController_Drawing.instance.player.head.transform;
+        Transform playerTrans = PlayerCurriculum.instance.GetHead();
         Vector3 pos = playerTrans.position + playerTrans.forward * baseRange;
         Quaternion rot = Quaternion.Inverse(playerTrans.rotation);
         pos += new Vector3 ( 0, 0, sinRange * Mathf.Sin ( Time.timeSinceLevelLoad * .5f ) );
@@ -89,7 +89,7 @@ public class DrawingController : MonoBehaviour
             CreateDraw ( (float) i );
         }
         countShown = constraint;
-        transform.SetParent ( GameController_Drawing.instance.player.rightHand.transform );
+        transform.SetParent ( PlayerCurriculum.instance.GetRightHand ( ) );
     }
 
     #endregion

@@ -15,9 +15,11 @@ public class PlayerCurriculum : MonoBehaviour
     [SerializeField]
     GameObject player_PC;
 
+    private VRNodeMinion HeadVR;
     private VRNodeMinion LeftHandVR;
     private VRNodeMinion RightHandVR;
 
+    private GameObject HeadPC;
     private GameObject LeftHandPC;
     private GameObject RightHandPC;
 
@@ -52,6 +54,18 @@ public class PlayerCurriculum : MonoBehaviour
         }
     }
 
+    public Transform GetHead ( )
+    {
+        if ( isVR )
+        {
+            return HeadVR.transform;
+        }
+        else
+        {
+            return HeadPC.transform;
+        }
+    }
+
     public bool ThisTriggerDown ( GameObject hand )
     {
         if ( debug ) Debug.Log ( (hand == GetLeftHand ( ).gameObject) + ", " + GetLeftTriggerDown ( ) );
@@ -83,7 +97,7 @@ public class PlayerCurriculum : MonoBehaviour
         }
         else
         {
-            if ( Input.GetKeyDown ( KeyCode.A ) )
+            if ( Input.GetKeyDown ( KeyCode.E ) )
             {
                 return true;
             }
@@ -194,6 +208,7 @@ public class PlayerCurriculum : MonoBehaviour
         {
             player_VR.SetActive ( true );
             player_PC.SetActive ( false );
+            HeadVR = player_VR.GetComponent<VRNodeLord> ( ).head;
             LeftHandVR = player_VR.GetComponent<VRNodeLord> ( ).leftHand;
             RightHandVR = player_VR.GetComponent<VRNodeLord> ( ).rightHand;
         }
@@ -201,6 +216,7 @@ public class PlayerCurriculum : MonoBehaviour
         {
             player_VR.SetActive ( false );
             player_PC.SetActive ( true );
+            HeadPC = player_PC.GetComponent<PlayerCurriculumPC> ( ).Head;
             LeftHandPC = player_PC.GetComponent<PlayerCurriculumPC> ( ).LeftHand;
             RightHandPC = player_PC.GetComponent<PlayerCurriculumPC> ( ).RightHand;
         }

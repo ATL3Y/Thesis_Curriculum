@@ -7,7 +7,6 @@ public class GameController_Drawing_s : MonoBehaviour
     #region public data
 
     public static GameController_Drawing_s instance;
-    public VRNodeLord player;
 
     #endregion
 
@@ -38,7 +37,7 @@ public class GameController_Drawing_s : MonoBehaviour
 
         if( displayTimer < 0.0f )
         {
-            if ( player.leftHand.Trigger > 0.99f )
+            if ( PlayerCurriculum.instance.GetLeftTriggerDown ( ) )
             {
                 if ( debug ) Debug.Log ( "Call display" );
                 DrawingController_s.instance.DisplayDraw ( );
@@ -49,7 +48,7 @@ public class GameController_Drawing_s : MonoBehaviour
         
         if( hideTimer < 0.0f )
         {
-            if ( player.rightHand.Trigger > 0.99f )
+            if ( PlayerCurriculum.instance.GetRightTriggerDown ( ) )
             {
                 if ( debug ) Debug.Log ( "Call hide" );
                 DrawingController_s.instance.HideDraw ( );
