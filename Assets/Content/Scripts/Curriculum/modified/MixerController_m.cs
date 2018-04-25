@@ -15,6 +15,8 @@ public class MixerController_m : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] AudioClip audioClip;
     private bool debug = true;
+    [SerializeField] GameObject pointerPrefab;
+    private GameObject pointer;
 
     #endregion
 
@@ -47,44 +49,43 @@ public class MixerController_m : MonoBehaviour
 
     private void Update ( )
     {
+        Vector3 fwd = PlayerCurriculum.instance.GetRightHand().transform.forward;
+        Vector3 pos = PlayerCurriculum.instance.GetRightHand().transform.position + fwd;
+        pointer.transform.position = pos + 10.0f * fwd;
+
         // SetVolume ( 1.0f );
-        if( GameController_Mixer.instance.leftHand.Trigger > 0.5f )
+        if ( PlayerCurriculum.instance.GetLeftTriggerDown ( ) )
         {
             if ( debug ) Debug.Log ( "leftHand.Trigger > 0.5f" );
             RaycastHit hit = new RaycastHit();
-
-            Vector3 fwd = GameController_Mixer.instance.leftHand.transform.forward;
-            Vector3 pos = GameController_Mixer.instance.leftHand.transform.position;
-
             Ray ray = new Ray(pos, fwd);
             if ( Physics.Raycast ( ray, out hit, 50.0f ) )
             {
                 if ( debug ) Debug.Log ( "Raycast: " + hit.transform.gameObject.name );
-                MixerFeature_m mixerVolume = hit.transform.gameObject.GetComponent<MixerFeature_m>();
-                if ( mixerVolume != null )
+                MixerFeature_m mixerFeature = hit.transform.gameObject.GetComponent<MixerFeature_m>();
+                if ( mixerFeature != null )
                 {
-                    if ( debug ) Debug.Log ( "mixerFeature.Fill to: " + hit.point.y / hit.collider.transform.localScale.y ); 
-                    mixerVolume.FillTo ( hit.point.y / hit.collider.transform.localScale.y );
+                    if ( debug ) Debug.Log ( "mixerFeature.Fill to: " + hit.point.y / hit.collider.transform.localScale.y );
+                    mixerFeature.FillTo ( hit.point.y / hit.collider.transform.localScale.y );
+                    pointer.transform.position = hit.point;
                 }
             }
         }
 
-        if ( GameController_Mixer.instance.rightHand.Trigger > 0.5f )
+        if ( PlayerCurriculum.instance.GetRightTriggerDown ( ) )
         {
             if ( debug ) Debug.Log ( "rightHand.Trigger > 0.5f" );
             RaycastHit hit = new RaycastHit();
-            Vector3 fwd = GameController_Mixer.instance.rightHand.transform.forward;
-            Vector3 pos = GameController_Mixer.instance.rightHand.transform.position + fwd;
-
             Ray ray = new Ray(pos, fwd);
             if ( Physics.Raycast ( ray, out hit, 50.0f ) )
             {
                 if ( debug ) Debug.Log ( "Raycast: " + hit.transform.gameObject.name );
-                MixerFeature_m mixerVolume = hit.transform.gameObject.GetComponent<MixerFeature_m>();
-                if ( mixerVolume != null )
+                MixerFeature_m mixerFeature = hit.transform.gameObject.GetComponent<MixerFeature_m>();
+                if ( mixerFeature != null )
                 {
-                    if ( debug ) Debug.Log ( "mixerFeature.Fill to: " + hit.point.y / hit.collider.transform.localScale.y ); 
-                    mixerVolume.FillTo ( hit.point.y / hit.collider.transform.localScale.y );
+                    if ( debug ) Debug.Log ( "mixerFeature.Fill to: " + hit.point.y / hit.collider.transform.localScale.y );
+                    mixerFeature.FillTo ( hit.point.y / hit.collider.transform.localScale.y );
+                    pointer.transform.position = hit.point;
                 }
             }
         }
@@ -98,13 +99,14 @@ public class MixerController_m : MonoBehaviour
     // Use this for initialization
     private void Start ( )
     {
-        // mixerFeatures = new List<MixerFeature> ( ); // Exercise: initialize in start and run the debugger
+        // mixerFeatures = new List<MixerFeature> ( ); // ATL: initialize in start and run the debugger
         audioSource = gameObject.AddComponent<AudioSource> ( );
         audioSource.clip = audioClip;
         audioSource.volume = 0.0f;
         audioSource.spatialBlend = 0.0f;
         audioSource.loop = true;
         audioSource.Play ( );
+        pointer = GameObject.Instantiate ( pointerPrefab );
     }
 
     #endregion
